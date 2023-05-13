@@ -3,15 +3,15 @@ PWD=$(shell pwd)
 AAP_JUCE_DIR=$(PWD)/external/aap-juce
 
 # Specify the app name. It will show up as the Main Launcher.
-APP_NAME=SampleProject
+APP_NAME=OPNplug-AE
 
 APP_BUILD_DIR=$(PWD)
 # Specify the app repo as a submodule
-APP_SRC_DIR=$(PWD)/external/SampleProject
+APP_SRC_DIR=$(PWD)/external/ADLplug-AE
 # Typical JUCE app submodules JUCE, but the location is up to the project.
-JUCE_DIR=$(APP_SRC_DIR)/-replace-here-per-target-app-/JUCE
+JUCE_DIR=$(APP_SRC_DIR)/external/JUCE
 
-APP_SHARED_CODE_LIBS="$(APP_NAME)_artefacts/lib$(APP_NAME)_SharedCode.a lib-additional-data-.a"
+APP_SHARED_CODE_LIBS="$(APP_NAME)_artefacts/lib$(APP_NAME)_SharedCode.a libADLMIDI.a libOPNMIDI.a libwopl.a libADLplug_fmt.a libsimple-ini.a libwopn.a"
 
 # It can be any name, just make sure you generate the diff for AAP support,
 # otherwise it will only build for Android without AAP.

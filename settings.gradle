@@ -1,2 +1,2 @@
-rootProject.name = 'name your app here'
+rootProject.name = 'ADLplug-LE'
 include ':app'

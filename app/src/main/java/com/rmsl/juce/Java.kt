@@ -8,7 +8,7 @@ class Java
 {
     companion object {
         init {
-            System.loadLibrary("USUALLY_YOUR_APP_IS_HERE_Standalone")
+            System.loadLibrary("OPNplug-AE_Standalone")
         }
         
         @JvmStatic

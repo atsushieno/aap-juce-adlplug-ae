@@ -14,6 +14,9 @@ android {
     defaultConfig {
         minSdk = 29
         targetSdk = 33
+        ndk {
+            abiFilters "x86_64", "arm64-v8a"
+        }
         externalNativeBuild {
             cmake {
                 arguments "-DANDROID=1",

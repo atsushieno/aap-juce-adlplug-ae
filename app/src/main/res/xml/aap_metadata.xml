@@ -3,7 +3,8 @@
 <plugins xmlns="urn:org.androidaudioplugin.core">
   <plugin name="OPNplug-AE" category="Instrument" author="Atsushi Eno"
           developer="Atsushi Eno" unique-id="juceaap:4f504e41" library="libOPNplug-AE_Standalone.so"
-          entrypoint="GetJuceAAPFactoryStandalone">
+          entrypoint="GetJuceAAPFactoryStandalone" gui:ui-view-factory="org.androidaudioplugin.ui.compose.ComposeAudioPluginViewFactory"
+          xmlns:gui="urn://androidaudioplugin.org/extensions/gui">
     <extensions>
       <extension uri="urn://androidaudioplugin.org/extensions/plugin-info/v2"/>
       <extension uri="urn://androidaudioplugin.org/extensions/presets/v2"/>
@@ -13,147 +14,170 @@
     </extensions>
     <parameters xmlns="urn://androidaudioplugin.org/extensions/parameters">
       <parameter id="0" name="Master volume" direction="input" minimum="0.0" maximum="10.0"
-                 default="0.009999999776482582" content="other"/>
+                 default="0.009999999776482582"/>
       <parameter id="1" name="Emulator" direction="input" minimum="0.0" maximum="5.0"
-                 default="0.0" content="other"/>
+                 default="0.0">
+        <enumeration value="0.0" name="MAME YM2612"/>
+        <enumeration value="0.2000000029802322" name="Nuked OPN2"/>
+        <enumeration value="0.4000000059604645" name="GENS 2.10 OPN2"/>
+        <enumeration value="0.6000000238418579" name="&lt;Reserved 3&gt;"/>
+        <enumeration value="0.800000011920929" name="Neko Project II Kai OPNA"/>
+        <enumeration value="1.0" name="MAME YM2608"/>
+      </parameter>
       <parameter id="2" name="Chip count" direction="input" minimum="1.0" maximum="100.0"
-                 default="0.0" content="other"/>
+                 default="0.0"/>
       <parameter id="3" name="Chip type" direction="input" minimum="0.0" maximum="1.0"
-                 default="0.0" content="other"/>
+                 default="0.0">
+        <enumeration value="0.0" name="OPN2 53 kHz"/>
+        <enumeration value="1.0" name="OPNA 55 kHz"/>
+      </parameter>
       <parameter id="4" name="[Part 1] Operator 1 Level" direction="input" minimum="0.0"
-                 maximum="127.0" default="0.005456011276692152" content="other"/>
+                 maximum="127.0" default="0.005456011276692152"/>
       <parameter id="5" name="[Part 1] Operator 3 Level" direction="input" minimum="0.0"
-                 maximum="127.0" default="0.005642011296004057" content="other"/>
+                 maximum="127.0" default="0.005642011296004057"/>
       <parameter id="6" name="[Part 1] Operator 2 Level" direction="input" minimum="0.0"
-                 maximum="127.0" default="0.007626015227288008" content="other"/>
+                 maximum="127.0" default="0.007626015227288008"/>
       <parameter id="7" name="[Part 1] Operator 4 Level" direction="input" minimum="0.0"
-                 maximum="127.0" default="0.007750015705823898" content="other"/>
+                 maximum="127.0" default="0.007750015705823898"/>
       <parameter id="8" name="[Part 2] Operator 1 Level" direction="input" minimum="0.0"
-                 maximum="127.0" default="0.005456011276692152" content="other"/>
+                 maximum="127.0" default="0.005456011276692152"/>
       <parameter id="9" name="[Part 2] Operator 3 Level" direction="input" minimum="0.0"
-                 maximum="127.0" default="0.005642011296004057" content="other"/>
+                 maximum="127.0" default="0.005642011296004057"/>
       <parameter id="10" name="[Part 2] Operator 2 Level" direction="input" minimum="0.0"
-                 maximum="127.0" default="0.007626015227288008" content="other"/>
+                 maximum="127.0" default="0.007626015227288008"/>
       <parameter id="11" name="[Part 2] Operator 4 Level" direction="input" minimum="0.0"
-                 maximum="127.0" default="0.007750015705823898" content="other"/>
+                 maximum="127.0" default="0.007750015705823898"/>
       <parameter id="12" name="[Part 3] Operator 1 Level" direction="input" minimum="0.0"
-                 maximum="127.0" default="0.005456011276692152" content="other"/>
+                 maximum="127.0" default="0.005456011276692152"/>
       <parameter id="13" name="[Part 3] Operator 3 Level" direction="input" minimum="0.0"
-                 maximum="127.0" default="0.005642011296004057" content="other"/>
+                 maximum="127.0" default="0.005642011296004057"/>
       <parameter id="14" name="[Part 3] Operator 2 Level" direction="input" minimum="0.0"
-                 maximum="127.0" default="0.007626015227288008" content="other"/>
+                 maximum="127.0" default="0.007626015227288008"/>
       <parameter id="15" name="[Part 3] Operator 4 Level" direction="input" minimum="0.0"
-                 maximum="127.0" default="0.007750015705823898" content="other"/>
+                 maximum="127.0" default="0.007750015705823898"/>
       <parameter id="16" name="[Part 4] Operator 1 Level" direction="input" minimum="0.0"
-                 maximum="127.0" default="0.005456011276692152" content="other"/>
+                 maximum="127.0" default="0.005456011276692152"/>
       <parameter id="17" name="[Part 4] Operator 3 Level" direction="input" minimum="0.0"
-                 maximum="127.0" default="0.005642011296004057" content="other"/>
+                 maximum="127.0" default="0.005642011296004057"/>
       <parameter id="18" name="[Part 4] Operator 2 Level" direction="input" minimum="0.0"
-                 maximum="127.0" default="0.007626015227288008" content="other"/>
+                 maximum="127.0" default="0.007626015227288008"/>
       <parameter id="19" name="[Part 4] Operator 4 Level" direction="input" minimum="0.0"
-                 maximum="127.0" default="0.007750015705823898" content="other"/>
+                 maximum="127.0" default="0.007750015705823898"/>
       <parameter id="20" name="[Part 5] Operator 1 Level" direction="input" minimum="0.0"
-                 maximum="127.0" default="0.005456011276692152" content="other"/>
+                 maximum="127.0" default="0.005456011276692152"/>
       <parameter id="21" name="[Part 5] Operator 3 Level" direction="input" minimum="0.0"
-                 maximum="127.0" default="0.005642011296004057" content="other"/>
+                 maximum="127.0" default="0.005642011296004057"/>
       <parameter id="22" name="[Part 5] Operator 2 Level" direction="input" minimum="0.0"
-                 maximum="127.0" default="0.007626015227288008" content="other"/>
+                 maximum="127.0" default="0.007626015227288008"/>
       <parameter id="23" name="[Part 5] Operator 4 Level" direction="input" minimum="0.0"
-                 maximum="127.0" default="0.007750015705823898" content="other"/>
+                 maximum="127.0" default="0.007750015705823898"/>
       <parameter id="24" name="[Part 6] Operator 1 Level" direction="input" minimum="0.0"
-                 maximum="127.0" default="0.005456011276692152" content="other"/>
+                 maximum="127.0" default="0.005456011276692152"/>
       <parameter id="25" name="[Part 6] Operator 3 Level" direction="input" minimum="0.0"
-                 maximum="127.0" default="0.005642011296004057" content="other"/>
+                 maximum="127.0" default="0.005642011296004057"/>
       <parameter id="26" name="[Part 6] Operator 2 Level" direction="input" minimum="0.0"
-                 maximum="127.0" default="0.007626015227288008" content="other"/>
+                 maximum="127.0" default="0.007626015227288008"/>
       <parameter id="27" name="[Part 6] Operator 4 Level" direction="input" minimum="0.0"
-                 maximum="127.0" default="0.007750015705823898" content="other"/>
+                 maximum="127.0" default="0.007750015705823898"/>
       <parameter id="28" name="[Part 7] Operator 1 Level" direction="input" minimum="0.0"
-                 maximum="127.0" default="0.005456011276692152" content="other"/>
+                 maximum="127.0" default="0.005456011276692152"/>
       <parameter id="29" name="[Part 7] Operator 3 Level" direction="input" minimum="0.0"
-                 maximum="127.0" default="0.005642011296004057" content="other"/>
+                 maximum="127.0" default="0.005642011296004057"/>
       <parameter id="30" name="[Part 7] Operator 2 Level" direction="input" minimum="0.0"
-                 maximum="127.0" default="0.007626015227288008" content="other"/>
+                 maximum="127.0" default="0.007626015227288008"/>
       <parameter id="31" name="[Part 7] Operator 4 Level" direction="input" minimum="0.0"
-                 maximum="127.0" default="0.007750015705823898" content="other"/>
+                 maximum="127.0" default="0.007750015705823898"/>
       <parameter id="32" name="[Part 8] Operator 1 Level" direction="input" minimum="0.0"
-                 maximum="127.0" default="0.005456011276692152" content="other"/>
+                 maximum="127.0" default="0.005456011276692152"/>
       <parameter id="33" name="[Part 8] Operator 3 Level" direction="input" minimum="0.0"
-                 maximum="127.0" default="0.005642011296004057" content="other"/>
+                 maximum="127.0" default="0.005642011296004057"/>
       <parameter id="34" name="[Part 8] Operator 2 Level" direction="input" minimum="0.0"
-                 maximum="127.0" default="0.007626015227288008" content="other"/>
+                 maximum="127.0" default="0.007626015227288008"/>
       <parameter id="35" name="[Part 8] Operator 4 Level" direction="input" minimum="0.0"
-                 maximum="127.0" default="0.007750015705823898" content="other"/>
+                 maximum="127.0" default="0.007750015705823898"/>
       <parameter id="36" name="[Part 9] Operator 1 Level" direction="input" minimum="0.0"
-                 maximum="127.0" default="0.005456011276692152" content="other"/>
+                 maximum="127.0" default="0.005456011276692152"/>
       <parameter id="37" name="[Part 9] Operator 3 Level" direction="input" minimum="0.0"
-                 maximum="127.0" default="0.005642011296004057" content="other"/>
+                 maximum="127.0" default="0.005642011296004057"/>
       <parameter id="38" name="[Part 9] Operator 2 Level" direction="input" minimum="0.0"
-                 maximum="127.0" default="0.007626015227288008" content="other"/>
+                 maximum="127.0" default="0.007626015227288008"/>
       <parameter id="39" name="[Part 9] Operator 4 Level" direction="input" minimum="0.0"
-                 maximum="127.0" default="0.007750015705823898" content="other"/>
+                 maximum="127.0" default="0.007750015705823898"/>
       <parameter id="40" name="[Part 10] Operator 1 Level" direction="input" minimum="0.0"
-                 maximum="127.0" default="0.005456011276692152" content="other"/>
+                 maximum="127.0" default="0.005456011276692152"/>
       <parameter id="41" name="[Part 10] Operator 3 Level" direction="input" minimum="0.0"
-                 maximum="127.0" default="0.005642011296004057" content="other"/>
+                 maximum="127.0" default="0.005642011296004057"/>
       <parameter id="42" name="[Part 10] Operator 2 Level" direction="input" minimum="0.0"
-                 maximum="127.0" default="0.007626015227288008" content="other"/>
+                 maximum="127.0" default="0.007626015227288008"/>
       <parameter id="43" name="[Part 10] Operator 4 Level" direction="input" minimum="0.0"
-                 maximum="127.0" default="0.007750015705823898" content="other"/>
+                 maximum="127.0" default="0.007750015705823898"/>
       <parameter id="44" name="[Part 11] Operator 1 Level" direction="input" minimum="0.0"
-                 maximum="127.0" default="0.005456011276692152" content="other"/>
+                 maximum="127.0" default="0.005456011276692152"/>
       <parameter id="45" name="[Part 11] Operator 3 Level" direction="input" minimum="0.0"
-                 maximum="127.0" default="0.005642011296004057" content="other"/>
+                 maximum="127.0" default="0.005642011296004057"/>
       <parameter id="46" name="[Part 11] Operator 2 Level" direction="input" minimum="0.0"
-                 maximum="127.0" default="0.007626015227288008" content="other"/>
+                 maximum="127.0" default="0.007626015227288008"/>
       <parameter id="47" name="[Part 11] Operator 4 Level" direction="input" minimum="0.0"
-                 maximum="127.0" default="0.007750015705823898" content="other"/>
+                 maximum="127.0" default="0.007750015705823898"/>
       <parameter id="48" name="[Part 12] Operator 1 Level" direction="input" minimum="0.0"
-                 maximum="127.0" default="0.005456011276692152" content="other"/>
+                 maximum="127.0" default="0.005456011276692152"/>
       <parameter id="49" name="[Part 12] Operator 3 Level" direction="input" minimum="0.0"
-                 maximum="127.0" default="0.005642011296004057" content="other"/>
+                 maximum="127.0" default="0.005642011296004057"/>
       <parameter id="50" name="[Part 12] Operator 2 Level" direction="input" minimum="0.0"
-                 maximum="127.0" default="0.007626015227288008" content="other"/>
+                 maximum="127.0" default="0.007626015227288008"/>
       <parameter id="51" name="[Part 12] Operator 4 Level" direction="input" minimum="0.0"
-                 maximum="127.0" default="0.007750015705823898" content="other"/>
+                 maximum="127.0" default="0.007750015705823898"/>
       <parameter id="52" name="[Part 13] Operator 1 Level" direction="input" minimum="0.0"
-                 maximum="127.0" default="0.005456011276692152" content="other"/>
+                 maximum="127.0" default="0.005456011276692152"/>
       <parameter id="53" name="[Part 13] Operator 3 Level" direction="input" minimum="0.0"
-                 maximum="127.0" default="0.005642011296004057" content="other"/>
+                 maximum="127.0" default="0.005642011296004057"/>
       <parameter id="54" name="[Part 13] Operator 2 Level" direction="input" minimum="0.0"
-                 maximum="127.0" default="0.007626015227288008" content="other"/>
+                 maximum="127.0" default="0.007626015227288008"/>
       <parameter id="55" name="[Part 13] Operator 4 Level" direction="input" minimum="0.0"
-                 maximum="127.0" default="0.007750015705823898" content="other"/>
+                 maximum="127.0" default="0.007750015705823898"/>
       <parameter id="56" name="[Part 14] Operator 1 Level" direction="input" minimum="0.0"
-                 maximum="127.0" default="0.005456011276692152" content="other"/>
+                 maximum="127.0" default="0.005456011276692152"/>
       <parameter id="57" name="[Part 14] Operator 3 Level" direction="input" minimum="0.0"
-                 maximum="127.0" default="0.005642011296004057" content="other"/>
+                 maximum="127.0" default="0.005642011296004057"/>
       <parameter id="58" name="[Part 14] Operator 2 Level" direction="input" minimum="0.0"
-                 maximum="127.0" default="0.007626015227288008" content="other"/>
+                 maximum="127.0" default="0.007626015227288008"/>
       <parameter id="59" name="[Part 14] Operator 4 Level" direction="input" minimum="0.0"
-                 maximum="127.0" default="0.007750015705823898" content="other"/>
+                 maximum="127.0" default="0.007750015705823898"/>
       <parameter id="60" name="[Part 15] Operator 1 Level" direction="input" minimum="0.0"
-                 maximum="127.0" default="0.005456011276692152" content="other"/>
+                 maximum="127.0" default="0.005456011276692152"/>
       <parameter id="61" name="[Part 15] Operator 3 Level" direction="input" minimum="0.0"
-                 maximum="127.0" default="0.005642011296004057" content="other"/>
+                 maximum="127.0" default="0.005642011296004057"/>
       <parameter id="62" name="[Part 15] Operator 2 Level" direction="input" minimum="0.0"
-                 maximum="127.0" default="0.007626015227288008" content="other"/>
+                 maximum="127.0" default="0.007626015227288008"/>
       <parameter id="63" name="[Part 15] Operator 4 Level" direction="input" minimum="0.0"
-                 maximum="127.0" default="0.007750015705823898" content="other"/>
+                 maximum="127.0" default="0.007750015705823898"/>
       <parameter id="64" name="[Part 16] Operator 1 Level" direction="input" minimum="0.0"
-                 maximum="127.0" default="0.005456011276692152" content="other"/>
+                 maximum="127.0" default="0.005456011276692152"/>
       <parameter id="65" name="[Part 16] Operator 3 Level" direction="input" minimum="0.0"
-                 maximum="127.0" default="0.005642011296004057" content="other"/>
+                 maximum="127.0" default="0.005642011296004057"/>
       <parameter id="66" name="[Part 16] Operator 2 Level" direction="input" minimum="0.0"
-                 maximum="127.0" default="0.007626015227288008" content="other"/>
+                 maximum="127.0" default="0.007626015227288008"/>
       <parameter id="67" name="[Part 16] Operator 4 Level" direction="input" minimum="0.0"
-                 maximum="127.0" default="0.007750015705823898" content="other"/>
-      <parameter id="68" name="Volume model" direction="input" minimum="0.0" maximum="0.0"
-                 content="other"/>
+                 maximum="127.0" default="0.007750015705823898"/>
+      <parameter id="68" name="Volume model" direction="input" minimum="0.0" maximum="0.0">
+        <enumeration value="nan" name="Generic"/>
+      </parameter>
       <parameter id="69" name="LFO enable" direction="input" minimum="0.0" maximum="1.0"
-                 default="1.0" content="other"/>
+                 default="1.0">
+        <enumeration value="0.0" name="Off"/>
+        <enumeration value="1.0" name="On"/>
+      </parameter>
       <parameter id="70" name="LFO frequency" direction="input" minimum="0.0"
-                 maximum="7.0" default="0.02040816470980644" content="other"/>
+                 maximum="7.0" default="0.02040816470980644">
+        <enumeration value="0.0" name="3.98 Hz"/>
+        <enumeration value="0.1428571492433548" name="5.56 Hz"/>
+        <enumeration value="0.2857142984867096" name="6.02 Hz"/>
+        <enumeration value="0.4285714328289032" name="6.37 Hz"/>
+        <enumeration value="0.5714285969734192" name="6.88 Hz"/>
+        <enumeration value="0.7142857313156128" name="9.63 Hz"/>
+        <enumeration value="0.8571428656578064" name="48.1 Hz"/>
+        <enumeration value="1.0" name="72.2 Hz"/>
+      </parameter>
     </parameters>
     <ports>
       <port direction="output" content="audio" name="Left"/>

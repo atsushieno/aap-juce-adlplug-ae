@@ -7,6 +7,7 @@
           xmlns:gui="urn://androidaudioplugin.org/extensions/gui">
     <extensions>
       <extension uri="urn://androidaudioplugin.org/extensions/plugin-info/v2"/>
+      <extension uri="urn://androidaudioplugin.org/extensions/parameters/v2.1"/>
       <extension uri="urn://androidaudioplugin.org/extensions/presets/v2"/>
       <extension uri="urn://androidaudioplugin.org/extensions/state/v2"/>
       <extension uri="urn://androidaudioplugin.org/extensions/midi2/v2"/>
@@ -159,8 +160,10 @@
                  maximum="127.0" default="0.007626015227288008"/>
       <parameter id="67" name="[Part 16] Operator 4 Level" direction="input" minimum="0.0"
                  maximum="127.0" default="0.007750015705823898"/>
-      <parameter id="68" name="Volume model" direction="input" minimum="0.0" maximum="0.0">
-        <enumeration value="nan" name="Generic"/>
+      <parameter id="68" name="Volume model" direction="input" minimum="0.0" maximum="1.0"
+                 default="0.0">
+        <enumeration value="0.0" name="Generic"/>
+        <enumeration value="1.0" name="Runtime Crash"/>
       </parameter>
       <parameter id="69" name="LFO enable" direction="input" minimum="0.0" maximum="1.0"
                  default="1.0">

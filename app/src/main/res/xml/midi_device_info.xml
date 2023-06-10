@@ -1,5 +1,5 @@
 <devices>
-    <device name="Dexed" manufacturer="androidaudioplugin.org" product="Dexed">
+    <device name="OPNplug-AE" manufacturer="androidaudioplugin.org" product="OPNplug-AE">
         <input-port name="input" />
     </device>
 </devices>

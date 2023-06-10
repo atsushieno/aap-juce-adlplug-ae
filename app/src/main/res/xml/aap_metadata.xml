@@ -13,6 +13,7 @@
       <extension uri="urn://androidaudioplugin.org/extensions/midi2/v2"/>
       <extension uri="urn://androidaudioplugin.org/extensions/gui/v2"/>
     </extensions>
+    <!--
     <parameters xmlns="urn://androidaudioplugin.org/extensions/parameters">
       <parameter id="0" name="Master volume" direction="input" minimum="0.0" maximum="10.0"
                  default="0.009999999776482582"/>
@@ -182,6 +183,7 @@
         <enumeration value="1.0" name="72.2 Hz"/>
       </parameter>
     </parameters>
+    -->
     <ports>
       <port direction="output" content="audio" name="Left"/>
       <port direction="output" content="audio" name="Right"/>

@@ -1,4 +1,4 @@
-rootProject.name = 'ADLplug-LE'
+rootProject.name = 'ADLplug-AE'
 include ':app'
 // Enable below if you want to diagnose issues with aap-core internals
 //include ':androidaudioplugin'

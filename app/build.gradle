@@ -9,11 +9,11 @@ kotlin {
 
 android {
     namespace = "org.androidaudioplugin.ports.juce.adlplug_ae"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         minSdk = 29
-        targetSdk = 33
+        targetSdk = 34
         ndk {
             abiFilters "x86_64", "arm64-v8a"
         }
@@ -42,6 +42,7 @@ android {
         implementation libs.aap.core
         implementation libs.aap.midi.device.service
         implementation libs.aap.ui.compose
+        implementation libs.aap.ui.compose.app
     }
 
     externalNativeBuild {

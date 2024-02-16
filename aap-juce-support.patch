@@ -1,35 +1,16 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 76b0075..eba94d3 100644
+index 026037d..074184b 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -68,6 +68,34 @@ add_subdirectory(external/JUCE)
+@@ -68,6 +68,15 @@ add_subdirectory(external/JUCE)
  add_subdirectory(external/clap-juce-extensions EXCLUDE_FROM_ALL)
  
  
 +# begin AAP specifics -->
 +if (DEFINED AAP_DIR)
-+
-+## They are needed in desktop too, for generate-aap-metadata.
-+include_directories(
-+  "${AAP_DIR}/include"
-+)
-+add_definitions([[-DJUCE_PUSH_NOTIFICATIONS_ACTIVITY="com/rmsl/juce/JuceActivity"]])
++find_package(androidaudioplugin REQUIRED CONFIG)
++include_directories(${AAP_DIR}/include)
 +juce_add_modules(${AAP_JUCE_DIR}/aap-modules/aap_audio_processors)
-+
-+add_compile_definitions([[JUCE_DONT_AUTO_OPEN_MIDI_DEVICES_ON_MOBILE=1]])
-+
-+if (ANDROID)
-+  # dependencies
-+  find_library(log "log")
-+  find_library(android "android")
-+  find_library(glesv2 "GLESv2")
-+  find_library(egl "EGL")
-+  set(cpufeatures_lib "cpufeatures")
-+  set(oboe_lib "oboe")
-+endif (ANDROID)
-+message("AAP_DIR: ${AAP_DIR}")
-+message("AAP_JUCE_DIR: ${AAP_JUCE_DIR}")
-+
 +else()
 +message("AAP_DIR not defined: skipping AAP build.")
 +endif()
@@ -37,7 +18,7 @@ index 76b0075..eba94d3 100644
  
  # common build fragment using macro
  
-@@ -231,6 +259,30 @@ else ()
+@@ -232,6 +241,41 @@ else ()
      message(FATAL_ERROR "unsupported chip ${ADLplug_CHIP}")
  endif()
  
@@ -48,6 +29,8 @@ index 76b0075..eba94d3 100644
 +target_compile_definitions(${APP_NAME} PUBLIC
 +    JUCEAAP_HAVE_AUDIO_PLAYHEAD_NEW_POSITION_INFO=1
 +    JUCE_PUSH_NOTIFICATIONS=1
++    JUCE_PUSH_NOTIFICATIONS_ACTIVITY="com/rmsl/juce/JuceActivity"
++    JUCE_DONT_AUTO_OPEN_MIDI_DEVICES_ON_MOBILE=1
 +    )
 +
 +if (ANDROID)
@@ -55,6 +38,15 @@ index 76b0075..eba94d3 100644
 +    "${ANDROID_NDK}/sources/android/cpufeatures"
 +    "${OBOE_DIR}/include"
 +    )
++
++  # dependencies
++  find_library(log "log")
++  find_library(android "android")
++  find_library(glesv2 "GLESv2")
++  find_library(egl "EGL")
++  set(cpufeatures_lib "cpufeatures")
++  set(oboe_lib "oboe")
++
 +endif (ANDROID)
 +
 +target_link_libraries(${APP_NAME}
@@ -139,7 +131,7 @@ index d5914b1..67e8e89 100644
      : MidiKeyboardComponent(state, orientation),
        designated_note_color_((uint8_t)245, 0, 41, 0.5f)
 diff --git a/external/ADLplug/sources/ui/components/midi_keyboard_ex.h b/external/ADLplug/sources/ui/components/midi_keyboard_ex.h
-index f742ef6..3887945 100644
+index f742ef6..ec878e9 100644
 --- a/external/ADLplug/sources/ui/components/midi_keyboard_ex.h
 +++ b/external/ADLplug/sources/ui/components/midi_keyboard_ex.h
 @@ -6,12 +6,7 @@

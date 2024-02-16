@@ -9,11 +9,11 @@ kotlin {
 
 android {
     namespace = "org.androidaudioplugin.ports.juce.adlplug_ae"
-    compileSdk = 34
+    compileSdk = libs.versions.android.compileSdk.get().toInteger()
 
     defaultConfig {
-        minSdk = 29
-        targetSdk = 34
+        minSdk = libs.versions.android.minSdk.get().toInteger()
+        targetSdk = libs.versions.android.targetSdk.get().toInteger()
         ndk {
             abiFilters "x86_64", "arm64-v8a"
         }
@@ -26,6 +26,9 @@ android {
             }
         }
         proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        buildFeatures {
+            prefab true
+        }
     }
 
     sourceSets {

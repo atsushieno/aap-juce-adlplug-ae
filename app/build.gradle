@@ -9,7 +9,7 @@ kotlin {
 
 android {
     namespace = "org.androidaudioplugin.ports.juce.adlplug_ae"
-    compileSdk = libs.versions.android.compileSdk.get().toInteger()
+    compileSdkPreview = "VanillaIceCream"
 
     defaultConfig {
         minSdk = libs.versions.android.minSdk.get().toInteger()

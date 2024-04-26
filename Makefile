@@ -11,6 +11,8 @@ APP_SRC_DIR=$(PWD)/external/ADLplug-AE
 # Typical JUCE app submodules JUCE, but the location is up to the project.
 JUCE_DIR=$(APP_SRC_DIR)/external/JUCE
 
+APP_ICON=$(APP_SRC_DIR)/external/ADLplug/resources/application/OPNplug-96.png
+
 APP_SHARED_CODE_LIBS="$(APP_NAME)_artefacts/lib$(APP_NAME)_SharedCode.a libADLMIDI.a libOPNMIDI.a libwopl.a libADLplug_fmt.a libsimple-ini.a libwopn.a"
 
 # It can be any name, just make sure you generate the diff for AAP support,

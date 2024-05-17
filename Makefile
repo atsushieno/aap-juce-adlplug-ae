@@ -21,4 +21,8 @@ APP_SHARED_CODE_LIBS="$(APP_NAME)_artefacts/lib$(APP_NAME)_SharedCode.a libADLMI
 PATCH_FILE=$(PWD)/aap-juce-support.patch
 PATCH_DEPTH=1
 
+JUCE_PATCHES=$(AAP_JUCE_DIR)/juce-patches/7.0.6/support-plugin-ui.patch
+JUCE_PATCH_DEPTH=1
+
+
 include $(AAP_JUCE_DIR)/Makefile.cmake-common

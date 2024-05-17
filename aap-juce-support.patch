@@ -1,5 +1,5 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 026037d..074184b 100644
+index 026037d..59f9081 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -68,6 +68,15 @@ add_subdirectory(external/JUCE)
@@ -18,7 +18,7 @@ index 026037d..074184b 100644
  
  # common build fragment using macro
  
-@@ -232,6 +241,41 @@ else ()
+@@ -232,6 +241,43 @@ else ()
      message(FATAL_ERROR "unsupported chip ${ADLplug_CHIP}")
  endif()
  
@@ -44,6 +44,7 @@ index 026037d..074184b 100644
 +  find_library(android "android")
 +  find_library(glesv2 "GLESv2")
 +  find_library(egl "EGL")
++  find_package(androidaudioplugin)
 +  set(cpufeatures_lib "cpufeatures")
 +  set(oboe_lib "oboe")
 +
@@ -52,6 +53,7 @@ index 026037d..074184b 100644
 +target_link_libraries(${APP_NAME}
 +  PRIVATE
 +  aap_audio_processors
++  androidaudioplugin::androidaudioplugin
 +  )
 +endif()
 +# <-- end AAP specifics
@@ -131,7 +133,7 @@ index d5914b1..67e8e89 100644
      : MidiKeyboardComponent(state, orientation),
        designated_note_color_((uint8_t)245, 0, 41, 0.5f)
 diff --git a/external/ADLplug/sources/ui/components/midi_keyboard_ex.h b/external/ADLplug/sources/ui/components/midi_keyboard_ex.h
-index f742ef6..ec878e9 100644
+index f742ef6..3887945 100644
 --- a/external/ADLplug/sources/ui/components/midi_keyboard_ex.h
 +++ b/external/ADLplug/sources/ui/components/midi_keyboard_ex.h
 @@ -6,12 +6,7 @@

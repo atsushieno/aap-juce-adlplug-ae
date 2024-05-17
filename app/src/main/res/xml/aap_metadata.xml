@@ -3,7 +3,7 @@
 <plugins xmlns="urn:org.androidaudioplugin.core">
   <plugin name="OPNplug-AE" category="Instrument" author="Atsushi Eno"
           developer="Atsushi Eno" unique-id="juceaap:4f504e41" library="libOPNplug-AE_Standalone.so"
-          entrypoint="GetJuceAAPFactoryStandalone" gui:ui-view-factory="org.androidaudioplugin.ui.compose.ComposeAudioPluginViewFactory"
+          entrypoint="GetJuceAAPFactoryStandalone" gui:ui-view-factory="org.androidaudioplugin.juce.JuceAudioPluginViewFactory"
           xmlns:gui="urn://androidaudioplugin.org/extensions/gui">
     <extensions>
       <extension uri="urn://androidaudioplugin.org/extensions/plugin-info/v3"/>

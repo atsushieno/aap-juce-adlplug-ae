@@ -1,5 +1,5 @@
 <devices>
-    <device name="OPNplug-AE UMP" manufacturer="androidaudioplugin.org" product="OPNplug-AE">
+    <device name="OPNplug-AE" manufacturer="androidaudioplugin.org" product="OPNplug-AE">
         <port name="port1" />
     </device>
 </devices>

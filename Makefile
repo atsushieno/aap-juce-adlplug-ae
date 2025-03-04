@@ -24,6 +24,5 @@ PATCH_DEPTH=1
 # JUCE patches if any
 JUCE_PATCHES= \
         $(shell pwd)/external/aap-juce/juce-patches/7.0.12/disable-cgwindowlistcreateimage.patch
-JUCE_PATCH_DEPTH=1
 
 include $(AAP_JUCE_DIR)/Makefile.cmake-common

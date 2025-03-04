@@ -1,5 +1,5 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 026037d..074184b 100644
+index afb6f13..a835488 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -68,6 +68,15 @@ add_subdirectory(external/JUCE)
@@ -18,7 +18,7 @@ index 026037d..074184b 100644
  
  # common build fragment using macro
  
-@@ -232,6 +241,41 @@ else ()
+@@ -230,6 +239,41 @@ else ()
      message(FATAL_ERROR "unsupported chip ${ADLplug_CHIP}")
  endif()
  
@@ -61,6 +61,16 @@ index 026037d..074184b 100644
  
  # end of common stuff
 Submodule external/ADLplug contains modified content
+diff --git a/external/ADLplug/sources/JuceHeader.h b/external/ADLplug/sources/JuceHeader.h
+new file mode 100644
+index 0000000..a112f79
+--- /dev/null
++++ b/external/ADLplug/sources/JuceHeader.h
+@@ -0,0 +1,4 @@
++// It is a dummy header file.
++#include <juce_audio_processors/juce_audio_processors.h>
++#include <juce_audio_utils/juce_audio_utils.h>
++using namespace juce;
 diff --git a/external/ADLplug/sources/opl3/ui/main_component.cc b/external/ADLplug/sources/opl3/ui/main_component.cc
 index a009e6b..c0e590b 100644
 --- a/external/ADLplug/sources/opl3/ui/main_component.cc
@@ -131,7 +141,7 @@ index d5914b1..67e8e89 100644
      : MidiKeyboardComponent(state, orientation),
        designated_note_color_((uint8_t)245, 0, 41, 0.5f)
 diff --git a/external/ADLplug/sources/ui/components/midi_keyboard_ex.h b/external/ADLplug/sources/ui/components/midi_keyboard_ex.h
-index f742ef6..ec878e9 100644
+index f742ef6..3887945 100644
 --- a/external/ADLplug/sources/ui/components/midi_keyboard_ex.h
 +++ b/external/ADLplug/sources/ui/components/midi_keyboard_ex.h
 @@ -6,12 +6,7 @@

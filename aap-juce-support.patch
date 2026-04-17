@@ -18,7 +18,7 @@ index afb6f13..a835488 100644
  
  # common build fragment using macro
  
-@@ -230,6 +239,41 @@ else ()
+@@ -230,6 +239,42 @@ else ()
      message(FATAL_ERROR "unsupported chip ${ADLplug_CHIP}")
  endif()
  
@@ -61,7 +61,6 @@ index afb6f13..a835488 100644
  endfunction()
  
  # end of common stuff
-Submodule external/ADLplug contains modified content
 diff --git a/external/ADLplug/sources/JuceHeader.h b/external/ADLplug/sources/JuceHeader.h
 new file mode 100644
 index 0000000..a112f79
@@ -576,3 +575,37 @@ index 61b860d..f6e70c7 100644
  }
  
  template <class T>
+
+diff --git a/external/ADLplug/sources/ui/look_and_feel.cc b/external/ADLplug/sources/ui/look_and_feel.cc
+index b8e7034..e2e16be 100644
+--- a/external/ADLplug/sources/ui/look_and_feel.cc
++++ b/external/ADLplug/sources/ui/look_and_feel.cc
+@@ -143,6 +143,16 @@ Font Custom_Look_And_Feel::getComboBoxFont(ComboBox &box)
+     return { jmin (15.0f, box.getHeight() * 0.85f) };
+ }
+ 
++PopupMenu::Options Custom_Look_And_Feel::getOptionsForComboBoxPopupMenu(ComboBox &box, Label &label)
++{
++    auto options = Base::getOptionsForComboBoxPopupMenu(box, label);
++
++    if (auto *parent = box.getTopLevelComponent())
++        options = options.withParentComponent(parent);
++
++    return options;
++}
++
+ Label *Custom_Look_And_Feel::createSliderTextBox(Slider &slider)
+ {
+     std::unique_ptr<Label> label(Base::createSliderTextBox(slider));
+diff --git a/external/ADLplug/sources/ui/look_and_feel.h b/external/ADLplug/sources/ui/look_and_feel.h
+index 6f62c90..f962e1a 100644
+--- a/external/ADLplug/sources/ui/look_and_feel.h
++++ b/external/ADLplug/sources/ui/look_and_feel.h
+@@ -24,6 +24,7 @@ public:
+     void drawButtonBackground(Graphics &g, Button &button, const Colour &background_colour, bool is_mouse_over_button, bool is_button_down) override;
+ 
+     Font getComboBoxFont(ComboBox &box) override;
++    PopupMenu::Options getOptionsForComboBoxPopupMenu(ComboBox &box, Label &label) override;
+ 
+     Label *createSliderTextBox(Slider &slider) override;
+ 

@@ -1,5 +1,5 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index afb6f13..a835488 100644
+index 8a449dc..48940ed 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -68,6 +68,15 @@ add_subdirectory(external/JUCE)
@@ -61,16 +61,6 @@ index afb6f13..a835488 100644
  endfunction()
  
  # end of common stuff
-diff --git a/external/ADLplug/sources/JuceHeader.h b/external/ADLplug/sources/JuceHeader.h
-new file mode 100644
-index 0000000..a112f79
---- /dev/null
-+++ b/external/ADLplug/sources/JuceHeader.h
-@@ -0,0 +1,4 @@
-+// It is a dummy header file.
-+#include <juce_audio_processors/juce_audio_processors.h>
-+#include <juce_audio_utils/juce_audio_utils.h>
-+using namespace juce;
 diff --git a/external/ADLplug/sources/opl3/ui/main_component.cc b/external/ADLplug/sources/opl3/ui/main_component.cc
 index a009e6b..c0e590b 100644
 --- a/external/ADLplug/sources/opl3/ui/main_component.cc
@@ -193,7 +183,7 @@ index b43e3cf..99fbe96 100644
  protected:
      bool write_to_processor(
 diff --git a/external/ADLplug/sources/ui/generic_main_component.tcc b/external/ADLplug/sources/ui/generic_main_component.tcc
-index 61b860d..f6e70c7 100644
+index 61b860d..99145f2 100644
 --- a/external/ADLplug/sources/ui/generic_main_component.tcc
 +++ b/external/ADLplug/sources/ui/generic_main_component.tcc
 @@ -554,6 +554,25 @@ void Generic_Main_Component<T>::handle_edit_program()
@@ -575,9 +565,8 @@ index 61b860d..f6e70c7 100644
  }
  
  template <class T>
-
 diff --git a/external/ADLplug/sources/ui/look_and_feel.cc b/external/ADLplug/sources/ui/look_and_feel.cc
-index b8e7034..e2e16be 100644
+index b8e7034..b24dd3e 100644
 --- a/external/ADLplug/sources/ui/look_and_feel.cc
 +++ b/external/ADLplug/sources/ui/look_and_feel.cc
 @@ -143,6 +143,16 @@ Font Custom_Look_And_Feel::getComboBoxFont(ComboBox &box)
@@ -598,10 +587,10 @@ index b8e7034..e2e16be 100644
  {
      std::unique_ptr<Label> label(Base::createSliderTextBox(slider));
 diff --git a/external/ADLplug/sources/ui/look_and_feel.h b/external/ADLplug/sources/ui/look_and_feel.h
-index 6f62c90..f962e1a 100644
+index 6f62c90..dd8193f 100644
 --- a/external/ADLplug/sources/ui/look_and_feel.h
 +++ b/external/ADLplug/sources/ui/look_and_feel.h
-@@ -24,6 +24,7 @@ public:
+@@ -23,6 +23,7 @@ public:
      void drawButtonBackground(Graphics &g, Button &button, const Colour &background_colour, bool is_mouse_over_button, bool is_button_down) override;
  
      Font getComboBoxFont(ComboBox &box) override;
@@ -609,3 +598,13 @@ index 6f62c90..f962e1a 100644
  
      Label *createSliderTextBox(Slider &slider) override;
  
+diff --git a/external/ADLplug/sources/JuceHeader.h b/external/ADLplug/sources/JuceHeader.h
+new file mode 100644
+index 0000000..a112f79
+--- /dev/null
++++ b/external/ADLplug/sources/JuceHeader.h
+@@ -0,0 +1,4 @@
++// It is a dummy header file.
++#include <juce_audio_processors/juce_audio_processors.h>
++#include <juce_audio_utils/juce_audio_utils.h>
++using namespace juce;

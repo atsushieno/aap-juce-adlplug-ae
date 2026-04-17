@@ -52,6 +52,7 @@ index afb6f13..a835488 100644
 +target_link_libraries(${APP_NAME}
 +  PRIVATE
 +  aap_audio_processors
++  androidaudioplugin::androidaudioplugin
 +  )
 +endif()
 +# <-- end AAP specifics

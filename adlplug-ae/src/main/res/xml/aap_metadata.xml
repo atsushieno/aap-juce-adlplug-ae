@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugins xmlns="urn:org.androidaudioplugin.core">
-  <plugin name="OPNplug-AE" category="Instrument" author="Atsushi Eno"
-          developer="Atsushi Eno" unique-id="juceaap:4f504e41" library="libOPNplug-AE_Standalone.so"
+  <plugin name="ADLplug-AE" category="Instrument" author="Atsushi Eno"
+          developer="Atsushi Eno" unique-id="juceaap:adlplug-ae" library="libADLplug-AE_Standalone.so"
           entrypoint="GetJuceAAPFactoryStandalone" gui:ui-view-factory="org.androidaudioplugin.juce.JuceAudioPluginViewFactory"
           xmlns:gui="urn://androidaudioplugin.org/extensions/gui">
     <extensions bom="0.12.0" />

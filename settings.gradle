@@ -15,7 +15,8 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = 'ADLplug-AE'
-include ':app'
+include ':adlplug-ae'
+include ':opnplug-ae'
 
 // When debugging, enable these lines (and change `implementation` section in build.gradle.
 /*

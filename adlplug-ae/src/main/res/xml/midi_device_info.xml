@@ -1,0 +1,6 @@
+<devices>
+    <device name="ADLplug-AE" manufacturer="androidaudioplugin.org" product="ADLplug-AE">
+        <input-port name="input" />
+    </device>
+</devices>
+

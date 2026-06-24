@@ -8,7 +8,7 @@ kotlin {
 }
 
 android {
-    namespace = "org.androidaudioplugin.ports.juce.adlplug_ae"
+    namespace = "org.androidaudioplugin.ports.juce.opnplug_ae"
     compileSdk = libs.versions.android.compileSdk.get().toInteger()
 
     defaultConfig {

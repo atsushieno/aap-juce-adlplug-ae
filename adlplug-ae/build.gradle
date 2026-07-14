@@ -13,6 +13,7 @@ android {
 
     defaultConfig {
         minSdk = libs.versions.android.minSdk.get().toInteger()
+        targetSdk = libs.versions.android.targetSdk.get().toInteger()
         ndk {
             // should we make it customizable? We skip others just to reduce build time.
             abiFilters "x86_64", "arm64-v8a"

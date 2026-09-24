@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+  <string name="app_name">AAP ADLplug-AE / OPNplug-AE</string>
+  <string name="adlplug_service_label">AAP ADLplug-AE</string>
+  <string name="opnplug_service_label">AAP OPNplug-AE</string>
+</resources>

@@ -1,6 +1,0 @@
-<devices>
-    <device name="OPNplug-AE" manufacturer="androidaudioplugin.org" product="OPNplug-AE">
-        <port name="port1" />
-    </device>
-</devices>
-

@@ -1,0 +1,8 @@
+<!-- A MIDI device service serves only one device, so each plugin gets a port of it,
+     mapped by `aap:plugin-id`. -->
+<devices xmlns:aap="urn:org.androidaudioplugin.core">
+    <device name="ADLplug-AE / OPNplug-AE" manufacturer="androidaudioplugin.org" product="ADLplug-AE / OPNplug-AE">
+        <input-port name="ADLplug-AE" aap:plugin-id="juceaap:adlplug-ae" />
+        <input-port name="OPNplug-AE" aap:plugin-id="juceaap:opnplug-ae" />
+    </device>
+</devices>

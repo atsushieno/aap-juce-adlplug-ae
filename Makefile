@@ -2,8 +2,10 @@
 PWD=$(shell pwd)
 AAP_JUCE_DIR=$(PWD)/external/aap-juce
 
-# Specify the app name. It will show up as the Main Launcher.
-APP_NAME=OPNplug-AE
+# Specify the app name. It is used for the dist file names.
+# (The app contains both ADLplug-AE and OPNplug-AE, each running in its own process.
+# `make update-aap-metadata-cmake` generates metadata for this one only.)
+APP_NAME=ADLplug-AE
 
 APP_BUILD_DIR=$(PWD)
 # Specify the app repo as a submodule
@@ -11,12 +13,8 @@ APP_SRC_DIR=$(PWD)/external/ADLplug-AE
 # Typical JUCE app submodules JUCE, but the location is up to the project.
 JUCE_DIR=$(APP_SRC_DIR)/external/JUCE
 
-# Now we have adlplug-ae and opnplug-ae, it's going to break the premise.
-#APP_ICON=$(APP_SRC_DIR)/external/ADLplug/resources/application/OPNplug-96.png
-
-# We build two app modules instead of the conventional single `app` module,
-# so dist/cleanup must iterate over both.
-APP_MODULE_DIRS=adlplug-ae opnplug-ae
+# The launcher icon is tracked as app/src/main/res/drawable/ic_launcher.png.
+#APP_ICON=$(APP_SRC_DIR)/external/ADLplug/resources/application/ADLplug-96.png
 
 APP_SHARED_CODE_LIBS="$(APP_NAME)_artefacts/lib$(APP_NAME)_SharedCode.a libADLMIDI.a libOPNMIDI.a libwopl.a libADLplug_fmt.a libsimple-ini.a libwopn.a"
 

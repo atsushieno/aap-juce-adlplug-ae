@@ -7,6 +7,10 @@ kotlin {
     jvmToolchain(17)
 }
 
+// They can be overridden to build against local checkouts of aap-core and aap-juce.
+def aapDir = System.env.AAP_DIR != null ? System.env.AAP_DIR : "$projectDir/../external/aap-core"
+def aapJuceDir = System.env.AAP_JUCE_DIR != null ? System.env.AAP_JUCE_DIR : "$projectDir/../external/aap-juce"
+
 android {
     namespace = "org.androidaudioplugin.ports.juce.adlplug_ae"
     compileSdk = libs.versions.android.compileSdk.get().toInteger()
@@ -21,8 +25,8 @@ android {
         externalNativeBuild {
             cmake {
                 arguments "-DANDROID=1",
-                    "-DAAP_DIR=${System.env.AAP_DIR != null ? System.env.AAP_DIR : "$projectDir/../external/aap-core"}",
-                    "-DAAP_JUCE_DIR=${System.env.AAP_JUCE_DIR != null ? System.env.AAP_JUCE_DIR : "$projectDir/../external/aap-juce"}",
+                    "-DAAP_DIR=$aapDir",
+                    "-DAAP_JUCE_DIR=$aapJuceDir",
                     "-DANDROID_STL=c++_shared", "-DANDROID_CPP_FEATURES=exceptions rtti"
             }
         }
@@ -36,7 +40,7 @@ android {
         main.java.srcDirs +=
             ["../external/ADLplug-AE/external/JUCE/modules/juce_gui_basics/native/java/app",
              "../external/ADLplug-AE/external/JUCE/modules/juce_gui_basics/native/javaopt/app",
-             "../external/aap-juce/java"]
+             "$aapJuceDir/java"]
         main.res.srcDirs +=
             []
     }

@@ -15,8 +15,22 @@ what JUCE normally expects, we ended up creating another plugin build called
 ADLplug-AE.
 
 This app is somewhat special in that one source repo contains two plugins:
-ADLplug-AE and OPNplug-AE. We create separate app modules for each (it is
-currently impossible at JUCE to build two plugins within an app package).
+ADLplug-AE and OPNplug-AE, and one app package contains both. Each plugin has
+its own JUCE runtime, and two JUCE runtimes cannot share a process, so each
+plugin runs in its own process (`:adlplug` and `:opnplug`), with its own
+AudioPluginService and AudioPluginViewService. JUCE is initialized in each of
+them by aap-juce `JuceAudioPluginServiceExtension`; the main process (plugin
+manager UI and MIDI device service) does not load JUCE at all. See
+"Running plugins in separate processes" in aap-core `docs/DEVELOPERS.md`.
+
+This requires aap-core 0.11.2 or later, and an aap-juce that contains
+`JuceAudioPluginServiceExtension`. Hosts built with aap-core 0.11.1 or earlier
+support only one AudioPluginService per package, so they see only ADLplug-AE:
+OPNplug-AE's service declares its metadata (`aap_metadata_opnplug.xml`) as
+`#SecondaryPlugins`, which they ignore. To build against local checkouts of them,
+set the `AAP_DIR` and `AAP_JUCE_DIR` environment variables.
+
+The MIDI device service exposes one device with a port for each plugin.
 
 ## License
 

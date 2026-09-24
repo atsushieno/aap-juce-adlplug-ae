@@ -18,7 +18,7 @@ index 8a449dc..48940ed 100644
  
  # common build fragment using macro
  
-@@ -230,6 +239,42 @@ else ()
+@@ -230,6 +239,40 @@ else ()
      message(FATAL_ERROR "unsupported chip ${ADLplug_CHIP}")
  endif()
  
@@ -28,8 +28,6 @@ index 8a449dc..48940ed 100644
 +
 +target_compile_definitions(${APP_NAME} PUBLIC
 +    JUCEAAP_HAVE_AUDIO_PLAYHEAD_NEW_POSITION_INFO=1
-+    JUCE_PUSH_NOTIFICATIONS=1
-+    JUCE_PUSH_NOTIFICATIONS_ACTIVITY="com/rmsl/juce/JuceActivity"
 +    JUCE_DONT_AUTO_OPEN_MIDI_DEVICES_ON_MOBILE=1
 +    )
 +

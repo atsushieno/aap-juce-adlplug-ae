@@ -33,10 +33,11 @@ android {
     }
 
     sourceSets {
+        // We do not compile JUCE Java sources: JUCE loads its classes that have native methods
+        // (e.g. ComponentPeerView) from the byte-code embedded in each plugin library, so that
+        // ADLplug-AE and OPNplug-AE can live in the same process (see aap-juce docs/JUCE_GUI_SUPPORT.md).
         main.java.srcDirs +=
-            ["../external/ADLplug-AE/external/JUCE/modules/juce_gui_basics/native/java/app",
-             "../external/ADLplug-AE/external/JUCE/modules/juce_gui_basics/native/javaopt/app",
-             "../external/aap-juce/java"]
+            ["${System.env.AAP_JUCE_DIR != null ? System.env.AAP_JUCE_DIR : "$projectDir/../external/aap-juce"}/java"]
         main.res.srcDirs +=
             []
     }

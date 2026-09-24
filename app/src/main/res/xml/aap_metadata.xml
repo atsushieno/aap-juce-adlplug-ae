@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugins xmlns="urn:org.androidaudioplugin.core"
+         xmlns:gui="urn://androidaudioplugin.org/extensions/gui">
+  <plugin name="ADLplug-AE" category="Instrument" author="Atsushi Eno"
+          developer="Atsushi Eno" unique-id="juceaap:adlplug-ae" library="libADLplug-AE_Standalone.so"
+          entrypoint="GetJuceAAPFactoryStandalone" gui:ui-view-factory="org.androidaudioplugin.juce.JuceAudioPluginViewFactory">
+    <extensions bom="0.12.0" />
+    <ports>
+      <port direction="output" content="audio" name="Left"/>
+      <port direction="output" content="audio" name="Right"/>
+      <port direction="input" content="midi2" name="MIDI input"/>
+    </ports>
+  </plugin>
+  <plugin name="OPNplug-AE" category="Instrument" author="Atsushi Eno"
+          developer="Atsushi Eno" unique-id="juceaap:opnplug-ae" library="libOPNplug-AE_Standalone.so"
+          entrypoint="GetJuceAAPFactoryStandalone" gui:ui-view-factory="org.androidaudioplugin.juce.JuceAudioPluginViewFactory">
+    <extensions bom="0.12.0" />
+    <ports>
+      <port direction="output" content="audio" name="Left"/>
+      <port direction="output" content="audio" name="Right"/>
+      <port direction="input" content="midi2" name="MIDI input"/>
+    </ports>
+  </plugin>
+</plugins>

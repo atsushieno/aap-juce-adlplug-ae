@@ -3,7 +3,7 @@ PWD=$(shell pwd)
 AAP_JUCE_DIR=$(PWD)/external/aap-juce
 
 # Specify the app name. It will show up as the Main Launcher.
-APP_NAME=OPNplug-AE
+APP_NAME=ADLplug-AE
 
 APP_BUILD_DIR=$(PWD)
 # Specify the app repo as a submodule
@@ -11,12 +11,8 @@ APP_SRC_DIR=$(PWD)/external/ADLplug-AE
 # Typical JUCE app submodules JUCE, but the location is up to the project.
 JUCE_DIR=$(APP_SRC_DIR)/external/JUCE
 
-# Now we have adlplug-ae and opnplug-ae, it's going to break the premise.
+# The app contains both ADLplug-AE and OPNplug-AE, so we do not take either icon.
 #APP_ICON=$(APP_SRC_DIR)/external/ADLplug/resources/application/OPNplug-96.png
-
-# We build two app modules instead of the conventional single `app` module,
-# so dist/cleanup must iterate over both.
-APP_MODULE_DIRS=adlplug-ae opnplug-ae
 
 APP_SHARED_CODE_LIBS="$(APP_NAME)_artefacts/lib$(APP_NAME)_SharedCode.a libADLMIDI.a libOPNMIDI.a libwopl.a libADLplug_fmt.a libsimple-ini.a libwopn.a"
 
@@ -30,6 +26,7 @@ PATCH_DEPTH=1
 JUCE_PATCHES= \
         $(shell pwd)/external/aap-juce/juce-patches/7.0.12/disable-cgwindowlistcreateimage.patch \
         $(shell pwd)/external/aap-juce/juce-patches/7.0.6/support-plugin-ui.patch \
-        $(shell pwd)/external/aap-juce/juce-patches/7.0.11/juce-component-peer-view-touch.patch
+        $(shell pwd)/external/aap-juce/juce-patches/7.0.11/juce-component-peer-view-touch.patch \
+        $(shell pwd)/external/aap-juce/juce-patches/7.0.12/juce-component-peer-view-touch-bytecode.patch
 
 include $(AAP_JUCE_DIR)/Makefile.cmake-common

@@ -1,8 +1,19 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 8a449dc..48940ed 100644
+index 8a449dc..d1fcdf4 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -68,6 +68,15 @@ add_subdirectory(external/JUCE)
+@@ -1,4 +1,9 @@
+-cmake_minimum_required(VERSION 3.15)
++cmake_minimum_required(VERSION 3.22)
++
++get_filename_component(app_source "${CMAKE_CURRENT_LIST_DIR}" REALPATH)
++add_subdirectory("${app_source}/../aap-juce" "${CMAKE_CURRENT_BINARY_DIR}/aap-juce" EXCLUDE_FROM_ALL)
++aap_juce_configure(JUCE_SOURCE_DIR external/JUCE EMBEDDED_JAVA ADOPT_EXISTING_PATCHES)
++
+ 
+ project(ADLplug-AE VERSION 0.0.2)
+ 
+@@ -68,6 +73,15 @@ add_subdirectory(external/JUCE)
  add_subdirectory(external/clap-juce-extensions EXCLUDE_FROM_ALL)
  
  
@@ -18,7 +29,7 @@ index 8a449dc..48940ed 100644
  
  # common build fragment using macro
  
-@@ -230,6 +239,40 @@ else ()
+@@ -230,6 +244,40 @@ else ()
      message(FATAL_ERROR "unsupported chip ${ADLplug_CHIP}")
  endif()
  
